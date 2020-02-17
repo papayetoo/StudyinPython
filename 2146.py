@@ -19,6 +19,8 @@ def dfs_island(islandMap = [[]], r = 0, c = 0):
     dx = [0,0,1,-1]
     dy = [1,-1,0,0]
     for i in range(4):
+        if r + dy[i] >= 0 and r + dy[i] < len(islandMap) and c + dx[i] >= 0 and c + dx[i] < len(islandMap) and islandMap[r+dy[i]][c+dx[i]] == 0 :
+            islandMap[r][c] = -islandCount
         if r + dy[i] >= 0 and r + dy[i] < len(islandMap) and c + dx[i] >= 0 and c + dx[i] < len(islandMap) and islandMap[r+dy[i]][c+dx[i]] == 1 :
             islandMap[r+dy[i]][c+dx[i]] = islandCount
             dfs_island(islandMap, r + dy[i], c + dx[i])
@@ -45,9 +47,14 @@ def min_bridge():
                 answer = min(answer, abs(y1 - y0) + abs(x1 - x0) - 1)
     return answer
 
+# def shortest_bridge(list = [[]]):
+#     for i in range(len(list)):
+#         for j in range(len(list[i])):
+#             if list[i][j] < 0:
 
 n = int(input())
 islandMap = [[] for _ in range(n)]
+visited = [[0 for _ in range(n)] for _ in range(n)]
 mapIn = []
 for i in range(n):
     islandMap[i] = list(map(int, input().split()))
@@ -59,5 +66,6 @@ for i in range(n):
             islandInfo.append(island(i,j, islandCount))
             dfs_island(islandMap, i, j)
             islandCount += 1
-
 print(min_bridge())
+# for i in range(n):
+#     print(islandMap[i])

@@ -11,7 +11,7 @@ def next_perm(list = []):
         return False
         # i 가 0 까지 감소했다면 마지막 순열임.
     j = n # j 는 리스트의 가장 마지막 원소
-    while list[i - 1] >= list[j]: # [1,2,4,3]의 경우 j는 감소하지 않음.
+    while list[i - 1] >= list[j]: # [1,2,4,3]의 경우 j는 감소하지 않음. [1,2,3,4]의 경우에는 j = 2 까지 감소.
         j -= 1
     list[i - 1], list[j] = list[j], list[i - 1] # [1,2,4,3] -> [1,3,4,2]로 변경됨.
     j = n # 변경된 리스트의 마지막 원소
@@ -21,6 +21,11 @@ def next_perm(list = []):
         j -= 1
     return True
 def perm(shorterList = [], n = 0, r= 0,depth = 0):
+    # 모든 순열 구하는 함수
+    # 다만 이 문제에서는 메모리 문제 상 모든 순열을 저장하는 것은 불가능.
+    # 다른 문제에서도 마찬가지일 수 있다고 생각됨.
+    # C++ 상에서는 next_permutation이 STL에 있으나 파이썬에는 permutation은 있으나
+    # next_permutation은 없음.
     if depth == r :
         print(shorterList, sep=' ')
         return
@@ -28,7 +33,6 @@ def perm(shorterList = [], n = 0, r= 0,depth = 0):
         shorterList[i], shorterList[depth] = shorterList[depth], shorterList[i]
         perm(shorterList, n, r, depth + 1)
         shorterList[i], shorterList[depth] = shorterList[depth], shorterList[i]
-
 def solution(n = 0, shorterList = []):
     heightList = [i + 1 for i in range(n)]
     count = 0
@@ -53,7 +57,6 @@ def solution(n = 0, shorterList = []):
         else:
             next_perm(heightList)
             continue
-
 n = int(input())
 # 사람 수
 shorter = list(map(int, input().split()))
