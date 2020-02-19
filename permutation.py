@@ -11,7 +11,7 @@ def permutation(numbers=[], r = 0, depth = 0):
         permutation(numbers, r, depth + 1)
         numbers[i], numbers[depth] = numbers[depth], numbers[i]
 # 다음 순열
-def next_permutation(numbers = []):
+def next_permutation(numbers = [])->bool:
     n = len(numbers) - 1
     i = n
     # 마지막 순열인지 검사하는 부분
@@ -31,9 +31,29 @@ def next_permutation(numbers = []):
         i += 1
         j -= 1
     return  True
+#다음 순열 업그레이드 1 [3,2,1] 다음 순열을 반환하는 순열
+def next_permutation2(numbers=[]) -> None:
+    n = len(numbers) - 1
+    i = n
+    if n == 0:
+        return
+    while i - 1 >= 0 and numbers[i-1] >= numbers[i]:
+        i -= 1
+    if i == 0:
+        numbers.reverse()
+        return
+    j = n
+    while j >= 0 and numbers[i-1] >= numbers[j]:
+        j -= 1
+    numbers[i-1], numbers[j] = numbers[j], numbers[i-1]
+    j = n
+    while i < j:
+        numbers[i], numbers[j] = numbers[j], numbers[i]
+        i -= 1
+        j += 1
+    return
 
 
-
-numbers = [i + 1 for i in range(0, 5)]
-while next_permutation(numbers) is True:
-    print(numbers)
+numbers = [i for i in range(9, 0, -1)]
+next_permutation2(numbers)
+print(numbers)

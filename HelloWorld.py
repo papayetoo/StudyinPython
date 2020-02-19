@@ -1,5 +1,3 @@
-str = input()
-
 def addSharpChar(string):
     result = "#"
     length = len(string)
@@ -25,7 +23,39 @@ def manacher(sharpedString):
         if( r < i + a[i]) :
             r = i + a[i]
             p = i
-    return a
-manacherResult = manacher(addSharpChar(str))
-print(max(manacherResult))
 
+    maxIndex = a.index(max(a))
+    for i in range(maxIndex - a[maxIndex], maxIndex + a[maxIndex] + 1):
+        if sharpedString[i] != '#':
+            print(sharpedString[i],end='')
+    return a
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        manacher = '#'
+        for c in s:
+            manacher += c
+            manacher += '#'
+
+        arr = [0 for _ in range(len(manacher))]
+        r = 0
+        p = 0
+
+        for i in range(len(manacher)):
+            if i <= r:
+                arr[i] = min(r - i, arr[2 * p - i])
+            else:
+                arr[i] = 0
+
+            while arr[i] + 1 <= i < len(manacher) - arr[i] - 1 and manacher[i - arr[i] - 1] == manacher[i + arr[i] + 1]:
+                arr[i] += 1
+
+            if i + arr[i] > r:
+                p, r = i, i + arr[i]
+
+        answer = 0
+        for value in arr:
+            answer += int((value + 1)/2)
+        return  answer
+Solution.countSubstrings(Solution, s=input())
+alpha = 'a'
+print(int(alpha))
