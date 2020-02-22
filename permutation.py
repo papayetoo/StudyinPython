@@ -39,7 +39,7 @@ def next_permutation2(numbers=[]) -> None:
         return
     while i - 1 >= 0 and numbers[i-1] >= numbers[i]:
         i -= 1
-    if i == 0:
+    if i == 0: # next_permutation1 과 다른 부분.
         numbers.reverse()
         return
     j = n

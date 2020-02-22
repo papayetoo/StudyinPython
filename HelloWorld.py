@@ -56,6 +56,5 @@ class Solution:
         for value in arr:
             answer += int((value + 1)/2)
         return  answer
-Solution.countSubstrings(Solution, s=input())
-alpha = 'a'
-print(int(alpha))
+arr = [2,2,2,2,5,5,5,8]
+print(sum(arr[0:2]))
