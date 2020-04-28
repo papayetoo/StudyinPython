@@ -1,4 +1,5 @@
 import itertools, sys
+
 sys.setrecursionlimit(10**8)
 def next_perm(list = []):
     n = len(list) - 1
