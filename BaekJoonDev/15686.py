@@ -1,4 +1,5 @@
 from itertools import combinations
+
 def chickenDistance(chkzip, homes):
     ret = 0
     for h in homes:
@@ -11,7 +12,6 @@ def chickenDistance(chkzip, homes):
         # print('chicken distance: {}'.format(temp))
         ret += temp
     return ret
-
 
 n, number = map(int, input().split())
 arr = [list( map( int, input().split() ) ) for _ in range(n)]
