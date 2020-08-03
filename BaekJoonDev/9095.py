@@ -1,18 +1,12 @@
-def addOneTwoThree(k = 0):
-    dp = [0 for _ in range(0,11)]
-    dp[1] = 1
-    dp[2] = 2
-    dp[3] = 4
+# 1,2,3 더하기
+numbers = [0, 1, 2, 4]
+for i in range(4, 11):
+    numbers.append(numbers[i-1]+numbers[i - 2]+numbers[i-3])
 
-    for i in range(4, 11):
-        dp[i] = dp[i-1] + dp[i-2] + dp[i - 3]
-
-    return dp[k]
-
-testCase = int(input())
+i=int(input())
 answer = []
-for i in range(testCase):
-    answer.append(addOneTwoThree(int(input())))
+for j in range(i):
+    answer.append(int(input()))
 
-for a in answer:
-    print(a)
+for x in answer:
+    print(numbers[x])

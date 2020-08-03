@@ -10,9 +10,9 @@ def combination(arr = [], visited =[] ,index = 0, r = 0):
         # for i in range(len(arr)):
         #     if visited[i] == 1:
         #         print(arr[i], end=' ')
-        # for v in visited:
-        #     print(arr[v], end=' ')
-        # print()
+        for v in visited:
+            print(arr[v], end=' ')
+        print()
         return
 
     # for 문을 이용하는 방식
@@ -28,11 +28,11 @@ def combination(arr = [], visited =[] ,index = 0, r = 0):
     combination(arr, visited, index + 1, r)
 
 
-numList = [i + 1 for i in range(1000)]
+numList = [i for i in range(3)]
 # visited = [0 for _ in range(10)]
 visited = []
 import time
 start = time.mktime( time.localtime() )
-combination(numList, visited, 0, 3)
+combination(numList, visited, 0, 2)
 print('time diffrence : {}'.format(start  - time.mktime( time.localtime() ) ) )
 

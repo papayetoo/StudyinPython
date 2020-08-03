@@ -6,9 +6,9 @@ N,M,K = map(int, input.rstrip().split())
 arr = [0] * N
 for i in range(N):
     arr[i] = int( sys.stdin.readline())
-treeheight = math.ceil( math.log2(N)) + 1
-treesize = 1 << (treeheight+1) - 1
-tree = [0] * treesize
+tree_height = math.ceil(math.log2(N)) + 1
+tree_size = 1 << (tree_height + 1) - 1
+tree = [0] * tree_size
 
 
 def init(index, start, end):
@@ -17,8 +17,9 @@ def init(index, start, end):
         tree[index] = arr[start]
     else:
         mid = (start + end) // 2
-        tree[index] = init(index*2+1, start, mid) + init(index*2 +2, mid+1, end)
+        tree[index] = init(index*2+1, start, mid) + init(index*2 + 2, mid+1, end)
     return tree[index]
+
 
 def getsum(node, start, end, left, right):
     # Top-down 방식
