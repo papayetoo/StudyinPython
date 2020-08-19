@@ -22,9 +22,9 @@ class Solution:
                 tail_digit = num % 10
                 next_digits = set([tail_digit + K, tail_digit - K])
 
-                for next_diugit in next_digits:
-                    if 0 <= next_diugit < 10:
-                        new_num = num * 10 + next_diugit
+                for next_digit in next_digits:
+                    if 0 <= next_digit < 10:
+                        new_num = num * 10 + next_digit
                         next_queue.append(new_num)
             queue = next_queue
 
