@@ -1,8 +1,7 @@
 class Solution:
     def getRow(self, rowIndex: int) -> [int]:
         dp = [[0 for _ in range(34)] for _ in range(34)]
-
-        dp[0][0]
+        dp[0][0] = 1
         for i in range(1, 34):
             for j in range(i+1):
                 if j - 1 < 0:
