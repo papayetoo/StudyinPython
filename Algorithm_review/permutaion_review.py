@@ -12,6 +12,7 @@ def perm(nums: list, r: int, c: int):
         nums[index], nums[c] = nums[c], nums[index]
 
 
+visited = [False] * len(num)
 def permutation(numbers=[], r = 0, depth = 0):
     if depth == r:
         for i in range(0, r):
