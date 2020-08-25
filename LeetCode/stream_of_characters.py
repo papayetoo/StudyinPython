@@ -8,7 +8,6 @@ class TrieNode:
         self.childNodes = {}
         self.isWord = False
 
-
 class Trie:
     def __init__(self):
         self.root = TrieNode()
