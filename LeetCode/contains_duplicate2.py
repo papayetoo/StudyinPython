@@ -5,16 +5,16 @@ class Solution:
         if len(nums) <= 1 or k == 0 or t < 0:
             return False
 
-        if len(nums) == len(set(nums)) and  t == 0:
-            return True
+        if t == 0 and len(set(nums)) == len(nums):
+            return False
 
         length = len(nums)
         for i in range(length):
-            for j in range(1, k+1):
-                if i + j >= len(k):
+            for j in range(1, k + 1):
+                if i + j >= length:
                     break
                 else:
-                    if abs(nums[i] - nums[j]) <= t:
+                    if abs(nums[i] - nums[i + j]) <= t:
                         return True
         return False
 
