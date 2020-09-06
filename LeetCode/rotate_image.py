@@ -29,4 +29,4 @@ if __name__ == '__main__':
         [7, 8, 9]
     ]
     s = Solution()
-    s.rotate2(arr)
+    s.rotate(arr)
