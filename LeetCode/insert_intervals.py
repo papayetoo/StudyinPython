@@ -4,19 +4,19 @@ import bisect
 
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        endX = [y for (x, y) in intervals]
+        endTimes = [y for (x, y) in intervals]
 
-        beginPos = bisect.bisect_left(endX, newInterval[0])
-        i = beginPos
+        insertPos = bisect.bisect_left(endTimes, newInterval[0])
+        i = insertPos
 
-        newMinX = newInterval[0]
-        newMaxX = newInterval[1]
+        nStart = newInterval[0]
+        nEnd = newInterval[1]
         while i < len(intervals) and intervals[i][0] < newInterval[1]:
-            newMinX = min(newMinX, intervals[i][0])
-            newMaxX = max(newMaxX, intervals[i][1])
+            nStart = min(nStart, intervals[i][0])
+            nEnd = max(nEnd, intervals[i][1])
             i += 1
 
-        answerIntervals = intervals[:beginPos] + [[newMinX, newMaxX]] + intervals[i:]
+        answerIntervals = intervals[:insertPos] + [[nStart, nEnd]] + intervals[i:]
         return answerIntervals
 
 
