@@ -28,11 +28,9 @@ def combination(arr = [], visited =[] ,index = 0, r = 0):
     combination(arr, visited, index + 1, r)
 
 
-numList = [i for i in range(3)]
+numList = [i for i in range(1, 10)]
 # visited = [0 for _ in range(10)]
 visited = []
-import time
-start = time.mktime( time.localtime() )
-combination(numList, visited, 0, 2)
-print('time diffrence : {}'.format(start  - time.mktime( time.localtime() ) ) )
+combination(numList, visited, 0, 3)
+
 
