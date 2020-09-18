@@ -52,7 +52,23 @@ class Solution(object):
 
         return max_xor
 
+    def findMaximumXOR2(self, nums):
+        ans, mask = 0, 0
+        for i in range(4, -1, -1):
+            # |= 십진법 상에서 += 과 같음
+            mask |= 1 << i
+            found = set([num & mask for num in nums])
+            print(found)
+
+            start = ans | 1 << i
+            for pref in found:
+                if start ^ pref in found:
+                    ans = start
+                    break
+
+        return ans
+
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.findMaximumXOR([8,10, 2]))
+    print(s.findMaximumXOR2([8,10, 2]))

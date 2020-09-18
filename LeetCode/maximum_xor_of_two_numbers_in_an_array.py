@@ -69,8 +69,5 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
     arr = [8,10,2]
-    trie = Trie()
-    for n in arr:
-        trie.insert(n)
-    print(trie.bestMatch(8))
-    # print(s.findMaximumXOR(arr))
+    arrSums = [0] * len(arr)
+    print( 6 & 7)
