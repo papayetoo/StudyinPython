@@ -1,5 +1,6 @@
 import sys
 from collections import defaultdict
+from collections import deque
 from heapq import heappop, heappush
 
 
@@ -13,8 +14,13 @@ class Solution:
         while queue:
             midCost, nextCity = heappop(queue)
             for (endCost, endCity) in adj[nextCity]:
-                if dist[endCity] >= midCost + endCost:
-                    path[endCity].append(nextCity)
+                if dist[endCity] > midCost + endCost:
+                    if len(path[endCity]) == 0:
+                        path[endCity].append((endCost, nextCity))
+                    else:
+                        cost, _ = path[endCity][-1]
+                        if cost > endCost:
+                            path[endCity][-1] = (endCost, nextCity)
                     heappush(queue, (midCost + endCost, endCity))
                     dist[endCity] = midCost + endCost
         print(dist[end])
