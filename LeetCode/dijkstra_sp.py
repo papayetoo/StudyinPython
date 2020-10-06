@@ -23,5 +23,3 @@ if __name__ == '__main__':
     for _ in range(e):
         s, e, w = map(int, input().split())
         d[s].append((w, e))
-    dist = deepcopy(d[st])
-    heapq.heapify(dist)

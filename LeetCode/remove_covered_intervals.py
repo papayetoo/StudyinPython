@@ -4,19 +4,11 @@ from typing import List
 class Solution:
     def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
         n = len(intervals)
-
-        answer = n
         tmp = []
         intervals.sort(key=lambda x: (x[0], -x[1]))
         i = 0
         while i < n:
             curSt, curEnd = intervals[i]
-            # for j in range(i + 1, n):
-            #     st, end = intervals[j]
-            #     if curSt <= st and curEnd >= end:
-            #         continue
-            #     else:
-            #         break
             j = i + 1
             while j < n:
                 st, end = intervals[j]

@@ -5,7 +5,7 @@ input = sys.stdin.readline()
 N,M,K = map(int, input.rstrip().split())
 arr = [0] * N
 for i in range(N):
-    arr[i] = int( sys.stdin.readline())
+    arr[i] = int(sys.stdin.readline())
 tree_height = math.ceil(math.log2(N)) + 1
 tree_size = 1 << (tree_height + 1) - 1
 tree = [0] * tree_size

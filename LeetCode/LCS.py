@@ -11,7 +11,7 @@ if __name__ == '__main__':
                 else:
                     grid[r][c] = 1
             else:
-                grid[r][c] = max(grid[r-1][c] if r - 1 >=0 else 0, grid[r][c-1] if c - 1 >=0  else 0)
+                grid[r][c] = max(grid[r-1][c] if r - 1 >=0 else 0, grid[r][c-1] if c - 1 >= 0  else 0)
 
 
     t = len(s1) - 1

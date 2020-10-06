@@ -45,5 +45,5 @@ arr = [[0, -4, 5, 2, 3],
 # 3 4 6
 # 4 3 -4
 edges = {0: {1: -4, 2: 5, 3: 2, 4: 3}, 1: {3: -1}, 2: {3: -7}, 3: {4: 6}, 4: {3: -4}}
-# bellman_ford(arr, 5, 0)
-bellman_ford_dict(edges, 5, 1)
+bellman_ford(arr, 5, 0)
+# bellman_ford_dict(edges, 5, 1)
