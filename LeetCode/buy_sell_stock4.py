@@ -1,5 +1,5 @@
 class Solution:
-    def bestBuySellStock(self, prices:[int], K: int):
+    def bestBuySellStock(self, prices: [int], K: int):
         temp = [0]
         profit = {}
         for t in temp:
@@ -27,22 +27,16 @@ class Solution:
             else:
                 continue
 
-
     def maxProfit(self, prices: [int], K: int):
-        dp = [[[0 for _ in range(len(prices))] for _ in range(len(prices))] for _ in range(K+1)]
+        dp = [[0] * len(prices) for _ in range(len(prices))]
 
-        for i in range(len(prices)):
+        for i in range(len(prices) - 1):
             min_price = float('inf')
             max_profit = 0
-            for j in range(i+1, len(prices)):
+            for j in range(i, len(prices)):
                 min_price = min(prices[j], min_price)
                 max_profit = max(max_profit, prices[j] - min_price)
-                dp[1][i][j] = max_profit
-
-        for k in range(2, K):
-
-
-        print(dp)
+                dp[i][j] = max_profit
 
 
 

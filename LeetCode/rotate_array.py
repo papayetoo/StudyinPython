@@ -33,4 +33,4 @@ if __name__ == '__main__':
     # nums = [-1,-100,3,99]
     # k = 2
     Solution().rotate(nums, k)
-    print(nums)
+    print(nums)b
