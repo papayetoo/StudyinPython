@@ -13,6 +13,7 @@ class TreeNode:
 
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
+        # deque Solution
         level = 1
         q = deque([(root, level)])
 
@@ -30,3 +31,20 @@ class Solution:
 
         return 0
 
+    def minDepth2(self, root: TreeNode) -> int:
+        # Recurssive Solution
+        if not root:
+            return 0
+
+        lheight = float('inf')
+        rheight = float('inf')
+
+        if not root.left and not root.right:
+            return 1
+
+        if root.left:
+            lheight = min(lheight, 1 + self.minDepth(root.left))
+        if root.right:
+            rheight = min(rheight, 1 + self.minDepth(root.right))
+
+        return min(lheight, rheight)
