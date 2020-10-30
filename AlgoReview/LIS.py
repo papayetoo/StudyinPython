@@ -1,12 +1,30 @@
 from typing import List
 import bisect
 class Solution:
+    def findNumberOfLis(self, nums: List[int])->int:
+        dp = [1 for _ in range(len(nums))]
+        counts = [1 for _ in range(len(nums))]
+
+        for j, num in enumerate(nums):
+            for i in range(j):
+                if nums[i] < nums[j]:
+                    if dp[i] >= dp[j]:
+                        dp[j] = 1 + dp[i]
+                        counts[j] = counts[i]
+                    elif dp[i] + 1 == dp[j]:
+                        counts[j] += counts[j]
+
+        longest = max(dp)
+        return sum(c for i,c in enumerate(counts) if dp[i] == longest)
+
+
     def lengthOfLIS(self, nums: List[int])->int:
         # DP 방법을 이용한 풀이방법
         # 두 가진 단점이 존재한다고 생각됨
         # 첫 번재는 사소하지만, 최장 증가 수열이 무엇인지 이 풀이만으로는 알 수가 없음.
         # 두 번째 시간복잡도가 n^2임.
         dp = [1 for _ in range(len(nums))]
+        count = [0 for _ in range(len(nums))]
         for i in range(1, len(nums)):
             for j in range(i):
                 if nums[i] > nums[j]:
