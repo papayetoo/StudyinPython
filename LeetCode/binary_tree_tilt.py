@@ -10,8 +10,6 @@ class TreeNode:
 
 class Solution:
     def findTilt(self, root: TreeNode) -> int:
-
-
         def postorder(node: TreeNoe):
             if not node:
                 return 0
