@@ -65,8 +65,12 @@ def kmp(s: str, p: str) -> bool:
             j += 1
         else:
             if j != 0:
+                # 일치하지 않는 인덱스가 패턴의 첫 시작 문자가 아니라면
+                # 이전 인덱스의 실패함수의 다음 위치와 비교
                 j = failure[j - 1] + 1
             else:
+                # 일치하지 않는 인덱스가 패턴의 첫 시작 문자라면
+                # 찾으련는 word의 인덱스를 1만큼 증가시키고, pattern의 인덱스는 유지
                 j = 0
                 i = i + 1
 
@@ -77,7 +81,7 @@ def kmp(s: str, p: str) -> bool:
 
 
 if __name__ == '__main__':
-    m = 'cdefgabbabcabb'
-    pattern = 'abb'
+    m = 'ababaa'
+    pattern = 'abac'
     print(fail2(pattern))
     print(kmp(m, pattern))
