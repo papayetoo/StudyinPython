@@ -9,7 +9,8 @@ def addSharpChar(string):
 
 
 def manacher(sharpedString):
-    a = [0] * len(sharpedString)
+    s = addSharpChar(sharpedString)
+    a = [0] * len(s)
     p = 0  ## 중심점 p = 0 초기화
     r = 0  ## 시작점에서 가장 먼 반경 초기화.
     for i in range(0, len(sharpedString)):
@@ -25,7 +26,6 @@ def manacher(sharpedString):
         if (r < i + a[i]):
             r = i + a[i]
             p = i
-
     maxIndex = a.index(max(a))
     for i in range(maxIndex - a[maxIndex], maxIndex + a[maxIndex] + 1):
         if sharpedString[i] != '#':
@@ -62,5 +62,7 @@ class Solution:
         return answer
 
 
-arr = [2, 2, 2, 2, 5, 5, 5, 8]
-print(sum(arr[0:2]))
+if __name__ == "__main__":
+    sol = Solution()
+    ans = sol.countSubstrings("aab")
+    print(ans)
